@@ -4,6 +4,6 @@ A collection of machine learning pose detection examples that make pose detectio
 
 Have a look at the examples to see how to easily use ml5js PoseNet and Google MediaPipe code:
 
-[ml5js posenet](/examples/Easy_ML5js_PoseNet)  
-[MediaPipe Landmark Detection](Easy_Google_MediaPipe_Landmark_Detection)  
-[MediaPipe Handpose](Easy_Google_MediaPipe_Handpose)  
+[ml5js posenet](examples/easy-mediapipe-handpose)  
+[MediaPipe Landmark Detection](examples/easy-mediapipe-landmark-detection)  
+[MediaPipe Handpose](examples/easy-ml5js-posenet)  
