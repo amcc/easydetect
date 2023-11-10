@@ -28,6 +28,9 @@ function draw() {
       // handedness stores if the hands are right/left
       let handedness = handednesses[index][0].displayName;
 
+      // if using a front camera hands are the wrong way round so we flip them
+      handedness === "Right" ? (handedness = "Left") : (handedness = "Right");
+
       // lets colour each hand depeding on whether its the first or second hand
       handedness === "Right" ? fill(255, 0, 0) : fill(0, 255, 0);
 

@@ -25,10 +25,10 @@ function draw() {
   if (landmarks.length > 0) {
     landmarks.forEach((person, index) => {
       // each person contains an array of positions of each body part
-      person.forEach((bodyPart) => {
+      person.forEach((part) => {
         // draw a circle on each body part
         // multiply by capture width and height to get the correct position
-        circle(bodyPart.x * capture.width, bodyPart.y * capture.height, 10);
+        circle(part.x * capture.width, part.y * capture.height, 10);
       });
     });
   }
