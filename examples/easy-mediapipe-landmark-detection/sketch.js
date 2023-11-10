@@ -70,7 +70,6 @@ function setCameraDimensions() {
   } else {
     capture.size((capture.width / capture.height) * height, height);
   }
-  // console.log(capture);
 }
 
 // resize the canvas when the window is resized

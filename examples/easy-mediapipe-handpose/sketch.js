@@ -5,11 +5,10 @@
 // make sure to call predictWebcam as a callback to createCapture
 // this ensures the video is ready
 
-// parts index:
-// https://developers.google.com/mediapipe/solutions/vision/pose_landmarker/index
+// parts index and documentation:
+// https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
 
 let capture;
-let loadedCamera;
 let captureEvent;
 
 function setup() {
@@ -21,19 +20,30 @@ function draw() {
   background(255);
   image(capture, 0, 0);
 
-  // console.log({landmarks})
-  let first = true;
+  // landmarks contain an array of hands
   if (landmarks.length > 0) {
-    for (const hand of landmarks) {
-      first ? fill(255, 0, 0) : fill(0, 255, 0);
-      first = false;
-      for (const m of hand) {
-        circle(m.x * capture.width, m.y * capture.height, m.z * 100);
-      }
-    }
+    landmarks.forEach((hand, index) => {
+      // each hand contains an array of finger/knuckle positions
+
+      // handedness stores if the hands are right/left
+      let handedness = handednesses[index][0].displayName;
+
+      // lets colour each hand depeding on whether its the first or second hand
+      handedness === "Right" ? fill(255, 0, 0) : fill(0, 255, 0);
+
+      hand.forEach((part, index) => {
+        // each part is a knuckle or section of the hand
+        // we have x, y and z positions so we could also do this in 3D (WEBGL)
+        circle(part.x * capture.width, part.y * capture.height, part.z * 100);
+      });
+    });
   }
 }
 
+// this function helps to captuer the webcam in a way that ensure video is loaded
+// before we start predicting landmarks. Creatcapture has a callback which is
+// only called when the video is correctly loaded. At that point we set the dimensions
+// and start predicting landmarks
 function captureWebcam() {
   capture = createCapture(
     {
@@ -56,21 +66,22 @@ function captureWebcam() {
   capture.hide();
 }
 
+// this function sets the dimensions of the video element to match the
+// dimensions of the camera. This is important because the camera may have
+// different dimensions than the default video element
 function setCameraDimensions() {
-  loadedCamera = captureEvent.getTracks()[0].getSettings();
-  // console.log("cameraDimensions", loadedCamera);
+  // resize the capture depending on whether
+  // the camera is landscape or portrait
+
   if (capture.width > capture.height) {
     capture.size(width, (capture.height / capture.width) * width);
   } else {
     capture.size((capture.width / capture.height) * height, height);
   }
-  // console.log(capture);
 }
 
-function getAngle(v0x, v0y, v1x, v1y) {
-  return atan2(v1y - v0y, v1x - v0x);
-}
-
+// resize the canvas when the window is resized
+// also reset the camera dimensions
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   setCameraDimensions();

@@ -9,9 +9,9 @@ let runningMode = "VIDEO";
 let lastVideoTime = -1;
 let captureEvent;
 let loadedCamera;
-window.handedness = []
-window.landmarks = []
-window.worldLandmarks = []
+window.handednesses = [];
+window.landmarks = [];
+window.worldLandmarks = [];
 
 // Before we can use PoseLandmarker class we must wait for it to finish
 // loading. Machine Learning models can be large and take a moment to
@@ -23,29 +23,28 @@ const createPoseLandmarker = async () => {
   handLandmarker = await HandLandmarker.createFromOptions(vision, {
     baseOptions: {
       modelAssetPath: `https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task`,
-      delegate: "GPU"
+      delegate: "GPU",
     },
     runningMode: runningMode,
-    numHands: 2
+    numHands: 2,
   });
 };
 createPoseLandmarker();
 
 window.predictWebcam = async (video) => {
-  
   // Now let's start detecting the stream.
   let startTimeMs = performance.now();
 
   if (lastVideoTime !== video.elt.currentTime) {
     lastVideoTime = video.elt.currentTime;
     let results = handLandmarker.detectForVideo(video.elt, startTimeMs);
-    handedness = results.handedness
-    landmarks = results.landmarks
-    worldLandmarks = results.worldLandmarks
+    handednesses = results.handednesses;
+    landmarks = results.landmarks;
+    worldLandmarks = results.worldLandmarks;
   }
 
   // Call this function again to keep predicting when the browser is ready.
   window.requestAnimationFrame(() => {
-    predictWebcam(video)
+    predictWebcam(video);
   });
 };
