@@ -34,6 +34,14 @@ function draw() {
       hand.forEach((part, index) => {
         // each part is a knuckle or section of the hand
         // we have x, y and z positions so we could also do this in 3D (WEBGL)
+        if (index === 8) {
+          textSize(30);
+          text(
+            handedness,
+            part.x * capture.width + 20,
+            part.y * capture.height
+          );
+        }
         circle(part.x * capture.width, part.y * capture.height, part.z * 100);
       });
     });
@@ -56,7 +64,7 @@ function captureWebcam() {
       captureEvent = e;
       // do things when video ready
       // until then, the video element will have no dimensions, or default 640x480
-      capture.srcObject = e;
+      // capture.srcObject = e;
 
       setCameraDimensions();
       predictWebcam(capture);

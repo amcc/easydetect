@@ -35,7 +35,7 @@ window.predictWebcam = async (video) => {
   // Now let's start detecting the stream.
   let startTimeMs = performance.now();
 
-  if (lastVideoTime !== video.elt.currentTime) {
+  if (lastVideoTime !== video.elt.currentTime && handLandmarker) {
     lastVideoTime = video.elt.currentTime;
     let results = handLandmarker.detectForVideo(video.elt, startTimeMs);
     handednesses = results.handednesses;
