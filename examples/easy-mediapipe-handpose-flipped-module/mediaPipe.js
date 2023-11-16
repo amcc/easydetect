@@ -3,17 +3,19 @@ import {
   FilesetResolver,
 } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
 
-let handLandmarker;
-let runningMode = "VIDEO";
-// let video = null;
-let lastVideoTime = -1;
-let captureEvent;
-let loadedCamera;
+// make an object to export
+// at the end of the file this has the predictWebCam function added
+// it is then exported for use in the sketch.js file
 const mediaPipe = {
   handednesses: [],
   landmarks: [],
   worldLandmarks: [],
 };
+
+let handLandmarker;
+let runningMode = "VIDEO";
+// let video = null;
+let lastVideoTime = -1;
 
 // Before we can use PoseLandmarker class we must wait for it to finish
 // loading. Machine Learning models can be large and take a moment to
@@ -51,6 +53,9 @@ const predictWebcam = async (video) => {
   });
 };
 
+// add the predictWebcam function to the mediaPipe object
 mediaPipe.predictWebcam = predictWebcam;
 
+// export for use in sketch.js via an inline import script
+// see the html file for more
 export { mediaPipe };
