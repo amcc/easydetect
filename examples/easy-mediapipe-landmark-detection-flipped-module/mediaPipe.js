@@ -31,7 +31,7 @@ const createPoseLandmarker = async () => {
       delegate: "GPU",
     },
     runningMode: runningMode,
-    numPoses: 2,
+    numPoses: 1,
   });
 };
 createPoseLandmarker();
