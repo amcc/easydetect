@@ -75,6 +75,7 @@ function captureWebcam() {
     },
     function (e) {
       captureEvent = e;
+      console.log(captureEvent.getTracks()[0].getSettings());
       // do things when video ready
       // until then, the video element will have no dimensions, or default 640x480
       capture.srcObject = e;
