@@ -20,12 +20,12 @@
 
 // if you want to use an image uncomment the lines below and use instead of the video, also check setup and draw
 
-let video;
-// let img;
+// let video;
+let img;
 
-// function preload() {
-//   img = loadImage('jump.jpg');
-// }
+function preload() {
+  img = loadImage("jump.jpg");
+}
 
 function setup() {
   createCanvas(640, 480);
@@ -52,6 +52,6 @@ function draw() {
 
   fill(255, 0, 0);
   keypoints.forEach((keypoint) => {
-    circle(keypoint.position.x, keypoint.position.y, 10)
-  })
+    circle(keypoint.position.x, keypoint.position.y, 10);
+  });
 }

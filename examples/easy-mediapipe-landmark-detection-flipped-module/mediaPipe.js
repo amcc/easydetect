@@ -8,10 +8,6 @@ let poseLandmarker;
 let runningMode = "VIDEO";
 // let video = null;
 let lastVideoTime = -1;
-let captureEvent;
-let loadedCamera;
-window.landmarks = [];
-window.worldLandmarks = [];
 
 const mediaPipe = {
   landmarks: [],
@@ -36,7 +32,7 @@ const createPoseLandmarker = async () => {
 };
 createPoseLandmarker();
 
-window.predictWebcam = (video) => {
+const predictWebcam = (video) => {
   // Now let's start detecting the stream.
   let startTimeMs = performance.now();
 
@@ -54,5 +50,7 @@ window.predictWebcam = (video) => {
     predictWebcam(video);
   });
 };
+
+mediaPipe.predictWebcam = predictWebcam;
 
 export { mediaPipe };

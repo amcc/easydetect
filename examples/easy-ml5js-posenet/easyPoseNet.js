@@ -67,7 +67,8 @@ function startPoseNet(videoOrImage) {
   });
 }
 
-function addProps(obj, objName) {
+function addProps(obj) {
+  console.log(obj);
   let result = "";
   for (const i in obj) {
     // Object.hasOwn() is used to exclude properties from the object's
@@ -87,7 +88,7 @@ function addProps(obj, objName) {
 
 function modelReady() {
   console.log("Easy PoseNet is ready");
-  if(imageInput) poseNet.singlePose(input)
+  if (imageInput) poseNet.singlePose(input);
 }
 
 // define all the variables we need

@@ -34,7 +34,7 @@ function draw() {
       person.forEach((part) => {
         // draw a circle on each body part
         // multiply by capture width and height to get the correct position
-        circle(...getFlipPos(part), 10);
+        circle(getFlipPos(part)[0], getFlipPos(part)[1], 10);
       });
     });
   }
@@ -65,7 +65,7 @@ function captureWebcam() {
       // do things when video ready
       // until then, the video element will have no dimensions, or default 640x480
       setCameraDimensions();
-      predictWebcam(capture);
+      mediaPipe.predictWebcam(capture);
     }
   );
   capture.elt.setAttribute("playsinline", "");
