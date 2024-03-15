@@ -39,6 +39,30 @@ function setup() {
 }
 
 function draw() {
+  // define a list of variables you can use for x/y coordinates
+  // confused about this syntax ? check out the "destructuring assignment" in the JavaScript documentation
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+  let {
+    nose,
+    leftEye,
+    rightEye,
+    leftEar,
+    rightEar,
+    leftShoulder,
+    rightShoulder,
+    leftElbow,
+    rightElbow,
+    leftWrist,
+    rightWrist,
+    leftHip,
+    rightHip,
+    leftKnee,
+    rightKnee,
+    leftAnkle,
+    rightAnkle,
+  } = person;
+
   background(220);
 
   // display a video or image
@@ -48,7 +72,7 @@ function draw() {
   noStroke();
   fill("red");
   fill(255, 255, 0);
-  circle(person.nose.x, person.nose.y, 50);
+  circle(nose.x, nose.y, 50);
 
   fill(255, 0, 0);
   keypoints.forEach((keypoint) => {

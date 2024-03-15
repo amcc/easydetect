@@ -1,0 +1,20 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+main {
+  /* display: flex; */
+}
+#predictions {
+  position: absolute;
+  width: 40vw;
+  list-style-type: none;
+}
+video {
+  transform: scaleX(-1);
+}

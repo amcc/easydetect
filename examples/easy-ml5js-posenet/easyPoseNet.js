@@ -68,7 +68,6 @@ function startPoseNet(videoOrImage) {
 }
 
 function addProps(obj) {
-  console.log(obj);
   let result = "";
   for (const i in obj) {
     // Object.hasOwn() is used to exclude properties from the object's
