@@ -72,10 +72,15 @@ function draw() {
   noStroke();
   fill("red");
   fill(255, 255, 0);
+
+  // an example of how to use one of the above body parts
   circle(nose.x, nose.y, 50);
 
+  // all the keypoints for the body
   fill(255, 0, 0);
   keypoints.forEach((keypoint) => {
     circle(keypoint.position.x, keypoint.position.y, 10);
   });
+
+  // if you want to draw multiple people you can use the 'poses' array
 }
