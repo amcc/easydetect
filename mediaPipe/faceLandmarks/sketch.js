@@ -20,7 +20,7 @@ function setup() {
 
 function draw() {
   background(255);
-  drawBlendShapes(predictionsElement, mediaPipe.faceBlendshapes);
+  // drawBlendShapes(predictionsElement, mediaPipe.faceBlendshapes);
 
   // flip the webcam image so it looks like a mirror
   push();
