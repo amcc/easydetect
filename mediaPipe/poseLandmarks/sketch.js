@@ -37,18 +37,12 @@ function draw() {
       // each person contains an array of positions of each body part
       person.forEach((part, partIndex) => {
         // get the lerped position for detected body parts
-
         const x = lerpLandmarks[personIndex][partIndex].x;
         const y = lerpLandmarks[personIndex][partIndex].y;
-        // draw a circle on each body part
 
-        // non lerped
-        // fill(255);
-        // circle(...getFlipPos(part), 10);
+        // unlerped positions are part.x and part.y
+        // circle(part.x * capture.width, part.y * capture.height, 10);
 
-        // lerped
-        fill("cyan");
-        // circle(...getFlipPos(l[index]), 10);
         circle(x, y, 10);
       });
     });
